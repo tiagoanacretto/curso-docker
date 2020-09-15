@@ -32,3 +32,22 @@ docker image build -t ex-build-dev .
 docker container run -it -v $(pwd):/app -p 80:8000 --name python-server ex-build-dev
 docker run -it --volumes-from=python-server debian cat /log/http-server.log
 ```
+
+## 05-node-mongo-compose
+
+Exemplo de compose usando 3 containers: um com mongo, um com node-js para backend e um com nginx para frontend.
+
+Comandos para configuração do projeto:
+
+```
+cd backend
+npm init -y
+npm i --save express@4.15.3 mongoose@4.11.1 node-restful@0.2.6 body-parser@1.17.2 cors@2.8.3
+rm -rf node_modules
+```
+
+Para iniciar o Docker Compose:
+
+```
+docker-compose up
+```
