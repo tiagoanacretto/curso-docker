@@ -1,0 +1,13 @@
+version: '3'
+volumes:
+  dados:
+services:
+  db:
+    image: postgres:9.6
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - dados:/var/lib/postgres/data
+      - ./scripts:/scripts
+      # padrao para inicializao de scripts
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql

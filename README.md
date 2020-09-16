@@ -51,3 +51,13 @@ Para iniciar o Docker Compose:
 ```
 docker-compose up
 ```
+
+## 06-email-worker-compose
+
+![Diagrama](emailWorkers.png)
+
+```
+docker-compose up -d
+# Checar se o script init rodou com sucesso 
+docker-compose exec db psql -U postgres -f /scripts/check.sql
+```
