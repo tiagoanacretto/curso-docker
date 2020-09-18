@@ -50,11 +50,12 @@ services:
     networks:
       - fila
   worker:
-    image: python:3.6
+    # Ao inves de imagem, o DC vai procurar o Dockerfile no folder especificado
+    build: worker
     volumes:
       - ./worker:/worker
     working_dir: /worker
-    command: bash ./app.sh
+    command: worker.py
     networks:
       - fila
     depends_on:
