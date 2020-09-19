@@ -60,6 +60,8 @@ docker-compose up
 docker-compose up -d
 # Checar se o script init rodou com sucesso 
 docker-compose exec db psql -U postgres -f /scripts/check.sql
+# Executar um select dentro do container
+docker-compose exec db psql -U postgres -d email_sender -c 'select * from emails'  
 # subir 3 instancias do servico worker
 docker-compose up -d --scale worker=3
 ```
