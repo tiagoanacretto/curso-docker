@@ -12,7 +12,7 @@ services:
       # POSTGRES_PASSWORD: example
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
-      - dados:/var/lib/postgres/data
+      - dados:/var/lib/postgresql/data
       - ./scripts:/scripts
       # padrao para inicializao de scripts
       - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -45,6 +45,8 @@ services:
     depends_on:
       - db
       - queue
+    environment:
+      - DB_NAME=db_sender
   queue:
     image: redis:3.2
     networks:
